@@ -29,7 +29,7 @@ class Ninja:
 
     def special_attack(self, pirate):
         #double the attack at the cost of some health
-        if self.special_atk > 0
+        if self.special_atk > 0:
             print(f"{self.name} did a special attack!")
             self.attack(pirate)
             self.attack(pirate)
