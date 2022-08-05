@@ -1,1 +1,1 @@
-# how to
+# bootstrap with flask and python
