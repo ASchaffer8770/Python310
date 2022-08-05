@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Using Templates</title>
+</head>
+<style>
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.box {
+    display: inline-flex;
+    border-radius: 10px;
+    background-color: {{ color }};
+    border: 3px solid black;
+    height: 200px;
+    width: 200px;
+    margin: 15px;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+</style>
+<body>
+<h1>Welcome!</h1>
+<div class="container">
+    {% for x in range(0,num): %}
+    <div class="box"></div>
+    {% endfor %}
+</div>
+</body>
+</html>
