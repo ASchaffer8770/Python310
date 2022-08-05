@@ -20,16 +20,18 @@
     }
 </style>
 <body class="text-center">
-    <div class="container text-center">
-        <div class="count justify-center">
-            <h1>Counter</h1>
-            <h3>value</h3>
+    <form action="/submit" method="POST">
+        <div>
+            <h1>COUNTER</h1>
+            <h3>{{ session['count'] }}</h3>
+            <form action="/submit" method="POST">
+                <button name="clicked" value="1">Increase</button>
+            </form>
+            <form action="/destroy_session"  method="POST">
+                <button name="reset" value="1">Reset</button>
+            </form>
         </div>
-        <div class="buttons">
-            <button class="btn btn-primary">Increase</button>
-            <button class="btn btn-danger">Reset</button>
-        </div>
-    </div>
-    
+    </form>
+
 </body>
 </html>
