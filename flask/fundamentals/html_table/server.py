@@ -8,7 +8,8 @@ def template():
    {'first_name' : 'John', 'last_name' : 'Supsupin'},
    {'first_name' : 'Mark', 'last_name' : 'Guillen'},
    {'first_name' : 'KB', 'last_name' : 'Tonel'}
-]
+    ]
+    
     return render_template("index.html", users=users, dict=dict)
 
 
