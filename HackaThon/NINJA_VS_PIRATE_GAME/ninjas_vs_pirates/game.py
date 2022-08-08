@@ -12,7 +12,7 @@ import random
 # jack_sparrow.show_stats()
 
 
-# higher dice roll goes first ai or user
+
 # turn base until health is 0
 
 print(f"Welcome to Ninja vs Pirate!")
