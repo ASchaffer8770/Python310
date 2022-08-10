@@ -1,15 +1,16 @@
 from flask import Flask, render_template, redirect, request, session
 
+from user import Users
+
 app = Flask(__name__)
 
-@app.route('/create')
-def create():
-    return render_template('create.html')
+@app.route('/')
+def index():
+    return redirect ('/users')
 
-@app.route('/submit', methods = ['POST'])
-def submit():
-
-    return redirect ('/create')
+@app.route('/users')
+def users():
+    return render_template("users.html", users = Users.get_all())
 
 if __name__ == "__main__":
     app.run(debug=True)
