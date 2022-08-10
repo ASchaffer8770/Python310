@@ -1,0 +1,36 @@
+SELECT * FROM dojos;
+INSERT INTO dojos (name)
+VALUES('Chicago');
+INSERT INTO dojos (name)
+VALUES('Seattle');
+INSERT INTO dojos (name)
+VALUES('Denver');
+DELETE FROM dojos WHERE id < 4;
+INSERT INTO dojos (name)
+VALUES ('Denver');
+INSERT INTO dojos (name)
+VALUES('Seattle');
+INSERT INTO dojos (name)
+VALUES ('San Deigo');
+INSERT INTO ninjas (first_name, last_name, age, dojo_id)
+VALUES ('Alex', 'Schaffer', 29, 4);
+INSERT INTO ninjas (first_name, last_name, age, dojo_id)
+VALUES ('John', 'Michaels', 39, 4);
+INSERT INTO ninjas (first_name, last_name, age, dojo_id)
+VALUES ('Kim', 'Kelly', 19, 4);
+SELECT * FROM ninjas;
+INSERT INTO ninjas (first_name, last_name, age, dojo_id)
+VALUES ('Tracy', 'Kelly', 49, 5);
+INSERT INTO ninjas (first_name, last_name, age, dojo_id)
+VALUES ('Tim', 'Alexander', 25, 5);
+INSERT INTO ninjas (first_name, last_name, age, dojo_id)
+VALUES ('Chaz', 'Michaels', 33, 5);
+INSERT INTO ninjas (first_name, last_name, age, dojo_id)
+VALUES ('John', 'Trovolta', 65, 6);
+INSERT INTO ninjas (first_name, last_name, age, dojo_id)
+VALUES ('Joe', 'Sakic', 56, 6);
+INSERT INTO ninjas (first_name, last_name, age, dojo_id)
+VALUES ('Cale', 'Makar', 23, 6);
+SELECT * FROM ninjas WHERE dojo_id = 4;
+SELECT * FROM ninjas WHERE dojo_id = 6;
+SELECT * FROM ninjas WHERE dojo_id = 6 OR id = 10;
