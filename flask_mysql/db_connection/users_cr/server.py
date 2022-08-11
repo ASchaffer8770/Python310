@@ -1,6 +1,6 @@
 from flask import Flask, render_template, redirect, request, session
 
-from user import Users
+from user import users
 
 app = Flask(__name__)
 
@@ -10,7 +10,7 @@ def index():
 
 @app.route('/users')
 def users():
-    return render_template("users.html", users = Users.get_all())
+    return render_template("read.html", users = users.get_all())
 
 if __name__ == "__main__":
     app.run(debug=True)
