@@ -14,7 +14,7 @@ def dojo():
 def name(name):
     return f"Hi " + name
 
-@app.route ('/say/<int:num/<string:word>')
+@app.route ('/say/<int:num>/<string:word>')
 def multi_name(num, word):
     output = ''
     for i in range(0,num):
