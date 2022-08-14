@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, redirect, session
-app = Flask(__name__)  
-app.secret_key = "fruits"
 app = Flask(__name__, static_url_path='/static')
+app.secret_key = "fruits"
 
 @app.route('/')         
 def index():
@@ -10,13 +9,14 @@ def index():
 @app.route('/checkout', methods=['POST'])         
 def checkout():
     print(request.form)
-    first_name = request.form['first_name']
-    last_name = request.form['last_name']
-    student_id = request.form['student_id']
-    return render_template('checkout.html')
-
-@app.route('/order_complete')
+    session['first_name'] = request.form['first_name']
+    session['last_name'] = request.form['last_name']
+    session['student_id'] = request.form['student_id']
+    return render_template('\order_complete')
+        
+@app.route('/order_complete', methods = ['GET'])
 def completedOrder():
+    print(request.form)
     return render_template('complete.html')
 
 @app.route('/fruits')         
