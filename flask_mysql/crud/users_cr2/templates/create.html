@@ -4,12 +4,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create</title>
+    <title>Create New User</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootstrap.css') }}">
 </head>
 <body>
     <h1>Create a New User</h1>
-    <form action="">
-        
+    <form action="/users/create" method = 'post'>
+        <p>First Name:</p>
+        <input type="text" name="first_name" id="first_name">
+        <p>Last Name:</p>
+        <input type="text" name="last_name" id="last_name">
+        <p>Email:</p>
+        <input type="text" name="email" id="email">
+        <button class="btn btn-primary">Create User</button>
     </form>
+    <a href="/users" class = 'btn btn-warning'>Home</a>
 </body>
 </html>
