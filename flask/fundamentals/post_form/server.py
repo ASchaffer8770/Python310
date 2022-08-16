@@ -12,7 +12,10 @@ def submit():
     print(request.form)
     session['name'] = request.form['name'] #SESSION STORES THIS IN THE VARIABLE NAME
     session['age'] = request.form['age']
+    if request.form['secret'] != "this_is_a_secret_value":
+        return "Dont mess with the hidden value"
     session['secret'] = request.form['secret']
+
     return redirect ('/display') #DO NOT RENDER ON ACTION ROUTES INSTEAD REDIRECT
 
 @app.route('/display') #THIS IS WHAT DISPLAYS THE INFO FROM SESSION
