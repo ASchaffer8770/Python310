@@ -8,8 +8,8 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootstrap.css') }}">
 </head>
 <body>
-    <h1>Create a New User</h1>
-    <form action="/users/create" method = 'post'>
+    <h1 class="text-center">Create a New User</h1>
+    <form action="/users/create" method = 'post' class="text-center">
         <p>First Name:</p>
         <input type="text" name="first_name" id="first_name">
         <p>Last Name:</p>
@@ -18,6 +18,6 @@
         <input type="text" name="email" id="email">
         <button class="btn btn-primary">Create User</button>
     </form>
-    <a href="/users" class = 'btn btn-warning'>Home</a>
+    <a href="/users" class = 'btn btn-warning text-center'>Home</a>
 </body>
 </html>
