@@ -8,9 +8,10 @@
 </head>
 <body>
     <h1>Check out all the Dogs!</h1>
-    <ul> <!--This for loop brings all the dogs from the db and displays them on the page-->
-        {% for dog in all_dogs %}
-        <li>{{dog.id}} Name: {{dog.name}} Breed: {{dog.breed}} Color: {{dog.color}}</li>
+    <a href="/dogs/new">Add A Puppo</a>
+    <ul>
+        {% for dog in dogs %}
+        <li>{{dog.id}} Name: <a href="/dogs/{{dog.id}}">{{dog.name}}</a> Breed: {{dog.breed}} Color: {{dog.color}}</li>
         {% endfor %} 
     </ul>
 </body>

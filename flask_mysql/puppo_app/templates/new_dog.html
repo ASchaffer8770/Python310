@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Dog</title>
+</head>
+<body>
+    <h1>Add A Dog!</h1>
+    <form action="/dogs/create" method="POST">
+        <p>Name</p>
+        <input type="text" name="name" id="name">
+        <p>Breed</p>
+        <input type="text" name="breed" id="breed"><!--these names need to match the db info-->
+        <p>Color</p>
+        <input type="text" name="color" id = "color"> <!--Name attribute turns into the key in request.form -->
+        <button>SUBMIT</button>
+    </form>
+</body>
+</html>

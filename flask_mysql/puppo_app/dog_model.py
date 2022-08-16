@@ -10,6 +10,7 @@ class Dog:
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
 
+#READ ALL METHOD
     @classmethod
     def get_all(cls): #This is where queries go to controll the dog_schema DB
         query = "SELECT * FROM dogs;" #query where we select all dogs
@@ -21,3 +22,21 @@ class Dog:
             dog_instance = cls(row_from_db) #references class we are in  and instanciated a dictionary
             all_dogs.append(dog_instance)
         return all_dogs #this loop creates an instance from the class and turns a row into displayable data
+
+    #READ ONE
+    @classmethod
+    def get_one(cls, data):
+        query = "SELECT * FROM dogs WHERE id = %(id)s"
+        results = connectToMySQL(DATABASE).query_db(query,data)
+        if results:
+            dog_instance = cls(results[0])
+            return dog_instance
+        return results
+
+
+    #CREATE A DOG
+    @classmethod
+    def create(cls, data):
+        query = "INSERT INTO dogs (name, color, breed) VALUES (%(name)s, %(color)s, %(breed)s);"
+        return connectToMySQL(DATABASE).query_db(query, data)
+
