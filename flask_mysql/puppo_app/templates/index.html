@@ -11,7 +11,10 @@
     <a href="/dogs/new">Add A Puppo</a>
     <ul>
         {% for dog in dogs %}
-        <li>{{dog.id}} Name: <a href="/dogs/{{dog.id}}">{{dog.name}}</a> Breed: {{dog.breed}} Color: {{dog.color}}</li>
+        <li>{{dog.id}} Name: <a href="/dogs/{{dog.id}}">{{dog.name}}</a> Breed: {{dog.breed}} Color: {{dog.color}} |
+        <a href="/dogs/{{dog.id}}/edit">Edit</a> |
+        <a href="/dogs/{{dog.id}}/delete"> Delete Entry</a>
+        </li>
         {% endfor %} 
     </ul>
 </body>

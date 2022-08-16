@@ -28,5 +28,36 @@ def create_dog():
     Dog.create(request.form)
     return redirect('/')
 
+#UPDATE A DOG
+@app.route('/dogs/<int:id>/edit') #display the edit form
+def edit_form_dog(id):
+    data = {
+        "id":id
+    }
+    dog = Dog.get_one(data)
+    return render_template("edit_dog.html", dog=dog)
+
+@app.route('/dogs/<int:id>/update', methods = ['POST']) #action route to update in db
+def update_dog(id):
+    data = {
+        "name": request.form["name"],
+        "color": request.form["color"],
+        "breed": request.form["breed"],
+        "id": id
+    }
+    Dog.update(data)
+    return redirect ('/')
+
+#DELETE AND ENTRY
+@app.route('/dogs/<int:id>/delete')
+def remove_entry(id):
+    data = {
+        "id": id
+    }
+    Dog.delete(data)
+    return redirect('/')
+
+
+
 if __name__=="__main__": 
     app.run(debug=True)

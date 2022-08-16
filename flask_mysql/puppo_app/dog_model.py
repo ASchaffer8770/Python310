@@ -40,3 +40,15 @@ class Dog:
         query = "INSERT INTO dogs (name, color, breed) VALUES (%(name)s, %(color)s, %(breed)s);"
         return connectToMySQL(DATABASE).query_db(query, data)
 
+    #UPDATE A DOG
+    @classmethod
+    def update(cls, data):
+        query = "UPDATE dogs SET name = %(name)s, color = %(color)s, breed = %(breed)s" \
+            "WHERE id = %(id)s;"
+        return connectToMySQL(DATABASE).query_db(query, data)
+
+    #REMOVE AN ENTRY (DELETE)
+    @classmethod
+    def delete(cls, data):
+        query = "DELETE FROM dogs WHERE id = %(id)s;"
+        return connectToMySQL(DATABASE).query_db(query, data)
