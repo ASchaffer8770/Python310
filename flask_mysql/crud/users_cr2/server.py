@@ -18,6 +18,45 @@ def new_user_form():
 @app.route('/users/create', methods=['POST']) #ACTION ROUTE TO CREATE USER IN DB
 def new_user():
     User.create(request.form)
+    return redirect('/users')
+
+#READ ONE ROUTE
+@app.route('/users/<int:id>')
+@app.route('/users/show/<int:id>') #This route reads the id in the url and displays it its own page
+def display_one(id):
+    data = {
+        "id":id
+    }
+    user = User.get_one(data)
+    return render_template('read_one.html', user=user)
+
+#UPDATE/EDIT ROUTE
+@app.route('/users/<int:id>/edit') #display the edit form
+def display_edit(id):
+    data = {
+        "id":id
+    }
+    user = User.get_one(data)
+    return render_template('edit.html', user=user)
+
+@app.route('/user/<int:id>/update', methods=['POST'])#action route that is not working
+def update_user(id):
+    data = {
+        "first_name": request.form['first_name'],
+        "last_name": request.form['last_name'],
+        "email": request.form['email'],
+        "id":id
+    }
+    User.update(data)
+    return redirect('/users')
+
+#Delete route
+@app.route("/users/<int:id>/delete")
+def delete_user(id):
+    data = {
+        "id":id
+    }
+    User.delete(data)
     return redirect('/')
 
 if __name__=="__main__": 

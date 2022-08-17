@@ -25,8 +25,32 @@ class User: #create the class of user by calling all attributes from the user ta
             all_users.append(user_instance)
         return all_users
 
+#READ ONE METHOD
+    @classmethod
+    def get_one(cls, data):
+        query = "SELECT * FROM users WHERE id = %(id)s;"
+        result = connectToMySQL(DATABASE).query_db(query, data)
+        if result:
+            user_instance = cls(result[0])
+            return user_instance
+        return result
+
 #CREATE METHOD FOR USER
     @classmethod
     def create(cls, data):
         query = "INSERT INTO users (first_name, last_name, email) VALUES (%(first_name)s, %(last_name)s, %(email)s);"
         return connectToMySQL(DATABASE).query_db(query, data)
+
+
+#UPDATE AN USER ******************ROUTE OR METHOD DOES NOT WORK***************
+    @classmethod
+    def update(cls, data):
+        query = "UPDATE users SET first_name = %(first_name)s,  last_name = %(last_name)s, email = %(emails)s WHERE id = %(id)s;"
+        return connectToMySQL(DATABASE).query_db(query, data)
+
+#DELETE USER
+    @classmethod
+    def delete(cls, data):
+        query = "DELETE FROM users WHERE id = %(id)s"
+        return connectToMySQL(DATABASE).query_db(query, data)
+        
