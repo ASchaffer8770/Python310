@@ -14,5 +14,7 @@
     <p class="text-center">Created On: {{user.created_at}}</p>
     <p class="text-center">Last Update: {{user.updated_at}}</p>
     <a href="/users" class="btn btn-warning">HOME</a>
+    <a href="/users/{{user.id}}/edit" class="btn btn-primary">Edit</a>
+    <a href="/users/{{user.id}}/delete" class="btn btn-danger">Delete</a>
 </body>
 </html>
