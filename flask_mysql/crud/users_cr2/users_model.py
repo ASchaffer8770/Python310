@@ -1,5 +1,3 @@
-from sqlite3 import connect
-from unittest import result
 from mysqlconnection import connectToMySQL
 DATABASE = "users_schema"
 
@@ -45,7 +43,7 @@ class User: #create the class of user by calling all attributes from the user ta
 #UPDATE AN USER ******************ROUTE OR METHOD DOES NOT WORK***************
     @classmethod
     def update(cls, data):
-        query = "UPDATE users SET first_name = %(first_name)s,  last_name = %(last_name)s, email = %(emails)s WHERE id = %(id)s;"
+        query = "UPDATE users SET first_name = %(first_name)s,  last_name = %(last_name)s, email = %(email)s WHERE id = %(id)s;"
         return connectToMySQL(DATABASE).query_db(query, data)
 
 #DELETE USER

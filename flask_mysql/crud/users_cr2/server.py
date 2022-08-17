@@ -39,8 +39,8 @@ def display_edit(id):
     user = User.get_one(data)
     return render_template('edit.html', user=user)
 
-@app.route('/user/<int:id>/update', methods=['POST'])#action route that is not working
-def update_user(id):
+@app.route('/users/<int:id>/update', methods=['POST'])#action route that is not working
+def update(id):
     data = {
         "first_name": request.form['first_name'],
         "last_name": request.form['last_name'],
@@ -48,7 +48,7 @@ def update_user(id):
         "id":id
     }
     User.update(data)
-    return redirect('/users')
+    return redirect (f'/users/{id}')
 
 #Delete route
 @app.route("/users/<int:id>/delete")
