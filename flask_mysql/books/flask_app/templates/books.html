@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authors</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootstrap.css') }}">
+</head>
+<body>
+    <div class="container d-flex space-around">
+        <div class="col justify-content-center p-3 border bg-light">
+            <h1>New Books</h1>
+            <form action="/create/book" method="POST">
+                <p>Title:</p>
+                <input type="text" name="title" id="title">
+                <p>Number of Pages:</p>
+                <input type="text" name="num_of_pages" id="num_of_pages">
+                <button class="btn btn-primary">Create</button>
+            </form>
+        </div>
+        <div class="col justify-content-center p-3 border bg-light">
+            <h1>All Books</h1>
+            <ul class="list-unstyled">
+                {% for book in all_books %}
+                <li><a href="#">{{book.title}}</a></li>
+                {% endfor %}
+            </ul>
+            <a href="/">Home</a>
+        </div>
+    </div>
+</body>
+</html>
