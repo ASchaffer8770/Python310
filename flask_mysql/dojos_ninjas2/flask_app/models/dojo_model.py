@@ -1,6 +1,6 @@
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask_app import DATABASE
-from flask_app.models.ninjas_model import Ninja
+from flask_app.models import ninjas_model 
 
 class Dojo: #creates the dojo class
     def __init__ (self,data):
@@ -8,7 +8,7 @@ class Dojo: #creates the dojo class
         self.name = data['name']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
-        self.ninja = []
+        self.ninjas = []
 
 
 #add dojo methods below
@@ -29,12 +29,24 @@ class Dojo: #creates the dojo class
 
     @classmethod
     def read_one(cls, data):
-        query = "SELECT * FROM dojos WHERE id = %(id)s"
-        result = connectToMySQL(DATABASE).query_db(query, data)
-        if result:
-            dojo_instance = cls(result[0])
+        query = "SELECT * FROM dojos LEFT JOIN ninjas ON dojos.id = ninjas.dojo_id WHERE dojos.id = %(id)s"
+        results = connectToMySQL(DATABASE).query_db(query, data)
+        if results:
+            dojo_instance = cls(results[0]) 
+            for db_row in results:
+                ninja_data = {
+                "id":db_row['ninjas.id'],
+                "first_name":db_row['first_name'],
+                "last_name":db_row['last_name'],
+                "age":db_row['age'],
+                "dojo_id":db_row['dojo_id'],
+                "created_at":db_row['ninjas.created_at'],
+                "updated_at":db_row['ninjas.updated_at']
+            }
+                this_ninja = ninjas_model.Ninja(ninja_data)
+                dojo_instance.ninjas.append(this_ninja)
             return dojo_instance
-        return result
+        return results
 
     @classmethod
     def get_dojo_with_ninjas(cls,data):

@@ -12,4 +12,4 @@ def new_ninja():
 @app.route('/ninja/create', methods = ['POST'])
 def create_ninja():
     Ninja.create(request.form)
-    return redirect ('/dojo/<int:id>', ninjas=Ninja)
+    return redirect(f"/dojo/{request.form['dojo_id']}")# this pulls the dojo id and routes us to the read one

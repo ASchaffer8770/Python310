@@ -13,7 +13,7 @@
         <div class="justify-content-center">
         <form action="/ninja/create" method="post">
             <p>Dojo:</p>
-            <select name="dojos" id="dojos">
+            <select name="dojo_id" id="dojo">
                 {% for dojo in all_dojos %}
                 <option value={{dojo.id}}>{{dojo.name}}</option>
                 {% endfor %}
