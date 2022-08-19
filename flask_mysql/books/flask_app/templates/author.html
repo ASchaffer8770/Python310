@@ -21,7 +21,7 @@
             <h1>All Authors</h1>
             <ul class="list-unstyled">
                 {% for author in all_authors %}
-                <li><a href="#">{{author.name}}</a></li>
+                <li><a href="/author/{{author.id}}">{{author.name}}</a></li>
                 {% endfor %}
             </ul>
             <a href="/books">Add A Book</a>

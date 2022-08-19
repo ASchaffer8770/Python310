@@ -25,3 +25,13 @@ class Book:
     def create(cls,data): #create a new book
         query = "INSERT INTO books (title, num_of_pages) VALUES (%(title)s,%(num_of_pages)s)"
         return connectToMySQL(DATABASE).query_db(query, data)
+
+    @classmethod
+    def unfavorited_books(cls,data):
+        query = "SELECT * FROM books WHERE books.id NOT IN ( SELECT book_id FROM favorites WHERE author_id = %(id)s );"
+        result = connectToMySQL(DATABASE).query_db(query,data)
+        books = []
+        for db_row in result:
+            books.append(cls(db_row))
+        print(books)
+        return books

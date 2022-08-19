@@ -4,27 +4,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Authors</title>
+    <title>Author Favs</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootstrap.css') }}">
 </head>
 <body>
     <div class="container d-flex space-around">
         <div class="col justify-content-center p-3 border bg-light">
-            <h1>New Authors</h1>
-            <form action="/create/author" method="POST">
-                <p>Name:</p>
-                <input type="text" name="name" id="name">
-                <button class="btn btn-primary">Create</button>
-            </form>
-        </div>
-        <div class="col justify-content-center p-3 border bg-light">
-            <h1>All Authors</h1>
+            <h1>{{author.name}}'s Favorites</h1>
             <ul class="list-unstyled">
-                {% for author in all_authors %}
-                <li><a href="#">{{author.name}}</a></li>
+                {% for book in all_books %}
+                <li>{{book.title}}</li>
                 {% endfor %}
             </ul>
-            <a href="/books">Add A Book</a>
+            <a href="/">Home</a>
+        </div>
+        <div class="col justify-content-center p-3 border bg-light">
+            <form action="/add/favorite" method="POST">
+                <p>Book:</p>
+                <select name="title" id="title">
+                    {% for book in all_books %}
+                        <option value="{{book.title}}">{{book.title}}</option>
+                    {% endfor %}
+                </select>
+                <button class="btn btn-primary">Create</button>
+            </form>
         </div>
     </div>
 </body>

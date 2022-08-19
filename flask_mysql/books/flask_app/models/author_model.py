@@ -9,7 +9,7 @@ class Author:
         self.created_at = data ['created_at']
         self.updated_at = data ['updated_at']
 
-#CLASSMETHODS WHICH ALLOW US TO MAKE QUIERIES TO GRAB STUFF ABOUT THE AUTHOR
+#CLASSMETHODS WHICH ALLOW US TO create AUTHORs
     @classmethod
     def get_all(cls):
         query = "SELECT * FROM authors;"
@@ -24,3 +24,13 @@ class Author:
     def create(cls,data): #create a new author
         query = "INSERT INTO authors (name) VALUES (%(name)s)"
         return connectToMySQL(DATABASE).query_db(query, data)
+
+#GET ONE BY ID
+    @classmethod
+    def get_one(cls, data):
+        query = "SELECT * FROM authors WHERE id = %(id)s;"
+        result = connectToMySQL(DATABASE).query_db(query, data)
+        if result:
+            author_instance = cls(result[0])
+            return author_instance
+        return result
