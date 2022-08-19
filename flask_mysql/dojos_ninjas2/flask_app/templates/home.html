@@ -8,20 +8,25 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootstrap.css') }}">
 </head>
 <body>
-    <div class="d-flex">
+    <div class="d-flex justify-content-center">
         <div>
             <h1>New Dojo</h1>
             <p>Name:</p>
             <input type="text" name="dojo_name" id="dojo_id">
-            <button class="btn btn-primary">Create</button>
+            <a href="/create/dojo" class="btn btn-prinmary">Create</a>
         </div>
         <div>
             <h1>All Dojos</h1>
             <div class="border">
-                {% for dojos in Dojo %}
-                <li>{{dojos.name}}</li>
-                {% endfor %}
+                <ul>
+                    {% for dojo in all_dojos %}
+                    <li>
+                        <a href="dojo/{{dojo.id}}">{{dojo.name}}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
             </div>
+            <a href="/new/ninja">Add Ninja</a>
         </div>
     </div>
 </body>
