@@ -10,8 +10,21 @@
 <body>
    <h1>{{dojo.name}} Ninjas</h1>
    <form action="#">
-    <table>
-
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Age</th>
+            </tr>
+            {% for ninja in all_ninjas %}
+            <tr>
+                <td>{{ninja.first_name}}</td>
+                <td>{{ninja.last_name}}</td>
+                <td>{{ninja.age}}</td>
+            </tr>
+            {% endfor %}
+        </thead>
     </table>
    </form>
    <a href="/">Home</a>

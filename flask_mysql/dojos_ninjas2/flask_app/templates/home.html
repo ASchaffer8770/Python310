@@ -11,14 +11,16 @@
     <div class="d-flex justify-content-center">
         <div>
             <h1>New Dojo</h1>
-            <p>Name:</p>
-            <input type="text" name="dojo_name" id="dojo_id">
-            <a href="/create/dojo" class="btn btn-prinmary">Create</a>
+            <form action="/dojo/create" method="POST">
+                <p>Name:</p>
+                <input type="text" name="name" id="id">
+                <button class="btn btn-primary">Create</button>
+            </form>
         </div>
         <div>
             <h1>All Dojos</h1>
             <div class="border">
-                <ul>
+                <ul class="list-unstyled">
                     {% for dojo in all_dojos %}
                     <li>
                         <a href="dojo/{{dojo.id}}">{{dojo.name}}</a>
@@ -26,7 +28,7 @@
                     {% endfor %}
                 </ul>
             </div>
-            <a href="/new/ninja">Add Ninja</a>
+            <a href="/ninja/new">Add Ninja</a>
         </div>
     </div>
 </body>

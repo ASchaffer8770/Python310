@@ -15,7 +15,7 @@
             <p>Dojo:</p>
             <select name="dojos" id="dojos">
                 {% for dojo in all_dojos %}
-                <option value="{{dojo.name}}">{{dojo.name}}</option>
+                <option value={{dojo.id}}>{{dojo.name}}</option>
                 {% endfor %}
             </select>
             <p>First Name:</p>
