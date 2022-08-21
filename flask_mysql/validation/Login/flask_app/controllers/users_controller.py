@@ -10,6 +10,8 @@ bcrypt = Bcrypt(app)
 
 @app.route('/')
 def index():
+    if "user_id" in session:
+        return redirect('/welcome')
     return render_template('index.html')
 
 @app.route('/welcome')
@@ -27,7 +29,6 @@ def register():
         **request.form,
         'password' : hashed_pw
     }
-    User.create(data)
     session['user_id'] = User.create(data)
     return redirect('/welcome')
 
@@ -36,7 +37,7 @@ def logout():
     del session['user_id']
     return redirect('/')
 
-@app.route('/users/login', methods=['POST'])
+@app.route("/users/login", methods=['POST'])
 def login():
     data = {
         'email': request.form['email']
@@ -46,4 +47,7 @@ def login():
         flash("Invalid Credentials", "log")
         return redirect("/")
     if not bcrypt.check_password_hash(user_from_db.password, request.form['password']):
-        
+        flash("Invalid Credentials", "log")
+        return redirect("/")
+    session['user_id'] = user_from_db.id
+    return redirect('/welcome')

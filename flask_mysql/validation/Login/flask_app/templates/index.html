@@ -43,7 +43,7 @@
             {% for message in get_flashed_messages(category_filter = ['login']) %}
                 {{message}}
             {% endfor %}
-            <form action="users/login">
+            <form action="users/login" method="post">
                 <p>Email:</p>
                 <input type="text" name="email" id="email">
                 <p>Password:</p>

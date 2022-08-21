@@ -12,7 +12,7 @@ class User:
         self.email = data['email']
         self.password = data['password']
         self.created_at = data['created_at']
-        self.updated_at = data['updated_at']
+        self.update_at = data['update_at']
         
     @classmethod
     def create(cls,data):
