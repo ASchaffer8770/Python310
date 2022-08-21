@@ -1,6 +1,7 @@
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask_app import DATABASE
 from flask_app.models import ninjas_model 
+from flask import flash
 
 class Dojo: #creates the dojo class
     def __init__ (self,data):
@@ -61,5 +62,5 @@ class Dojo: #creates the dojo class
                 "last_name":db_row['ninja.last_name'],
                 "age":db_row['ninja.age']
             }
-            dojo.ninja.append(ninja.Ninja (ninja_data))
+            dojo.ninja.append(ninjas.Ninja (ninja_data))
         return dojo

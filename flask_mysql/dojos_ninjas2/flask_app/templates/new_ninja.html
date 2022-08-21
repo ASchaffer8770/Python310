@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootstrap.css') }}">
 </head>
 <body>
-    <div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-around">
         <h1>New Ninja</h1>
         <div class="justify-content-center">
         <form action="/ninja/create" method="post">
@@ -20,10 +20,19 @@
             </select>
             <p>First Name:</p>
             <input type="text" name="first_name" id="first_name">
+            {% for message in get_flashed_messages(category_filter = ['err_first_name']) %}
+                <p class="text-danger">{{message}}</p>
+            {% endfor %}
             <p>Last Name:</p>
             <input type="text" name="last_name" id="last_name">
+            {% for message in get_flashed_messages(category_filter = ['err_last_name']) %}
+                <p class="text-danger">{{message}}</p>
+            {% endfor %}
             <p>Age:</p>
             <input type="text" name="age" id="age">
+            {% for message in get_flashed_messages(category_filter = ['err_age']) %}
+                <p class="text-danger">{{message}}</p>
+            {% endfor %}
             <button>Create</button>
             </form>
         </div>

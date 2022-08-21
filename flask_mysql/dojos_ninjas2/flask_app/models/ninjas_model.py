@@ -1,5 +1,8 @@
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask_app import DATABASE
+from flask import flash
+import re
+ALPHANUMERIC = re.compile(r"^[a-zA-Z0-9]+$") #REGEX for no special characters
 
 
 class Ninja: #creates the ninja class
@@ -32,3 +35,22 @@ class Ninja: #creates the ninja class
     def update(cls,data): #update ninja
         query = "UPDATE ninjas SET first_name=%(first_name)s, last_name=%(last_name)s, age=%(age)s" \
             "WHERE id = %(id)s"
+
+    #Validator!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    @staticmethod
+    def validate(data):
+        is_valid = True
+        if len(data['first_name']) < 1:
+            is_valid = False
+            flash("First name must be provided", "err_first_name")
+        elif not ALPHANUMERIC.match(data['first_name']):
+            flash("Name cannot contain special characters", "err_first_name")
+            is_valid = False
+        if len(data['last_name']) < 1:
+            is_valid = False
+            flash("Last name must be provided", "err_last_name")
+        if len(data['age']) > 3:
+            is_valid = False
+            flash("Must be 18 or older to attend", "err_age")
+
+        return is_valid
